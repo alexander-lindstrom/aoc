@@ -2,7 +2,13 @@
 #include <ctype.h>
 #include <string.h>
 
-void line_handler1(char* line, void* sum){
+char numbers[9][6] = {"one", "two", "three", "four", "five",
+  "six", "seven", "eight", "nine"};
+  
+char reversed[9][6] = {"eno", "owt", "eerht", "ruof", "evif",
+  "xis", "neves", "thgie", "enin"};
+  
+void handle_line1(char* line, void* sum){
   
   int digits[BUFSIZE];
   int i = 0;
@@ -26,72 +32,14 @@ void line_handler1(char* line, void* sum){
   *isum += atoi(string);
 }
 
-// Yikes
-int find_string_number(char* string){
+int find_string_number(char* string, char lookup[9][6]){
   
-  if (strstr(string, "one") != NULL){
-    return 1;
+  for (int i=0; i<9; i++){
+    if (strstr(string, lookup[i]) != NULL){
+      return i+1;
+    }
   }
-  if (strstr(string, "two") != NULL){
-    return 2;
-  }
-  if (strstr(string, "three") != NULL){
-    return 3;
-  }
-  if (strstr(string, "four") != NULL){
-    return 4;
-  }
-  if (strstr(string, "five") != NULL){
-    return 5;
-  }
-  if (strstr(string, "six") != NULL){
-    return 6;
-  }
-  if (strstr(string, "seven") != NULL){
-    return 7;
-  }
-  if (strstr(string, "eight") != NULL){
-    return 8;
-  }
-  if (strstr(string, "nine") != NULL){
-    return 9;
-  }
-  return 0;
 }
-
-// Abomination
-int find_string_number_rev(char* string){
-  
-  if (strstr(string, "eno") != NULL){
-    return 1;
-  }
-  if (strstr(string, "owt") != NULL){
-    return 2;
-  }
-  if (strstr(string, "eerht") != NULL){
-    return 3;
-  }
-  if (strstr(string, "ruof") != NULL){
-    return 4;
-  }
-  if (strstr(string, "evif") != NULL){
-    return 5;
-  }
-  if (strstr(string, "xis") != NULL){
-    return 6;
-  }
-  if (strstr(string, "neves") != NULL){
-    return 7;
-  }
-  if (strstr(string, "thgie") != NULL){
-    return 8;
-  }
-  if (strstr(string, "enin") != NULL){
-    return 9;
-  }
-  return 0;
-}
-
 
 int get_first(char* line){
   
@@ -105,7 +53,7 @@ int get_first(char* line){
     }
     substr[i] = line[i];
     
-    int num = find_string_number(substr);
+    int num = find_string_number(substr, numbers);
     if(num){
       return num;
     }
@@ -135,7 +83,7 @@ int get_last(char* line){
   
   for(int j = i; j >=0; j--){
     substr[index] = line[j];
-    int num = find_string_number_rev(substr);
+    int num = find_string_number(substr, reversed);
     if(num){
       return num;
     }
@@ -149,7 +97,7 @@ int get_last(char* line){
 }
 
 
-void line_handler2(char* line, void* sum){
+void handle_line2(char* line, void* sum){
   
   int first = get_first(line);
   int last = get_last(line);
@@ -170,10 +118,10 @@ int main(int argc, char *argv[]){
   char* fname = "data/day1.txt";
   
   if(strcmp(argv[1], "part1") == 0){
-    get_lines(fname, line_handler1, &sum);
+    get_lines(fname, handle_line1, &sum);
   }
   else if(strcmp(argv[1], "part2") == 0){
-    get_lines(fname, line_handler2, &sum);
+    get_lines(fname, handle_line2, &sum);
   }
   else{
     printf("Invalid args!\n");
