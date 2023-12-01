@@ -159,23 +159,27 @@ void line_handler2(char* line, void* sum){
   *isum += atoi(string);
 }
 
-void part1(){
+int main(int argc, char *argv[]){
+  
+  if (argc != 2){
+    printf("Usage: dayn partx");
+    exit(-1);
+  }
   
   int sum = 0;
-  get_lines("data/day1_a.txt", line_handler1, &sum);
-  printf("%d\n", sum);
-}
-
-void part2(){
+  char* fname = "data/day1.txt";
   
-  int sum = 0;
-  get_lines("data/day1_a.txt", line_handler2, &sum);
-  printf("%d\n", sum);
-}
-
-int main(void){
+  if(strcmp(argv[1], "part1") == 0){
+    get_lines(fname, line_handler1, &sum);
+  }
+  else if(strcmp(argv[1], "part2") == 0){
+    get_lines(fname, line_handler2, &sum);
+  }
+  else{
+    printf("Invalid args!\n");
+    exit(-1);
+  }
   
-  part1();
-  part2();
+  printf("Sum: %d\n", sum);
   return 0;
 }
