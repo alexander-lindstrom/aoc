@@ -48,9 +48,7 @@ void set_colors(Game* g, const char* str, int cube_index){
 	
 	char substr[BUFSIZE];
 	memset(substr, 0, BUFSIZE);
-	int i = 0;
-	int j = 0;
-	int num = -1;
+	int i = 0, j = 0, num = 0;
 	
 	while(1){
 		
@@ -81,7 +79,6 @@ void parse(const char* line, Game* g){
 	char* second_part =  strchr(line, ':');
 	//also the ':'
 	strcpy(dummy, second_part+1);
-	
 	const char delim[2] = ";";
 	char* token;
 	
@@ -97,10 +94,7 @@ void parse(const char* line, Game* g){
 
 int possible(Game g){
 	
-	int rmax = 12;
-	int gmax = 13;
-	int bmax = 14;
-
+	int rmax = 12, gmax = 13, bmax = 14;
 	for(int i = 0; i < g.subgames; i++){
 		if (rmax < g.cubes[i].red){
 			return 0;
@@ -135,9 +129,7 @@ void handle_line(char* line, void* sum, int (*score)(Game)){
 
 int minimum_power(Game g){
 	
-	int rmax = 0;
-	int gmax = 0;
-	int bmax = 0;
+	int rmax = 0, gmax = 0, bmax = 0;
 	for(int i = 0; i < g.subgames; i++){
 		if (g.cubes[i].red > rmax){
 			rmax = g.cubes[i].red;

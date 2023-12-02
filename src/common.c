@@ -18,8 +18,7 @@ void get_lines(char* fname, void (*line_handler)(char*, void*), void* params){
 //Assumes newline at the end of string
 int count_chars(const char* str, char c){
 
-	int count = 0;
-	int i = 0;
+	int i = 0, count = 0;
 	
 	while(1){
 		if (str[i] == '\n' || str[i] == 0){
