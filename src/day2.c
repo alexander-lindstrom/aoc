@@ -1,5 +1,4 @@
 #include "common.h"
-#include <string.h>
 
 #define COLORS 3
 char colors[][6] = {"red", "green", "blue"};
@@ -114,7 +113,7 @@ int minimum_power(Game g){
 	return max[0]*max[1]*max[2];
 }
 
-void handle_line(char* line, void* sum, int (*score)(Game)){
+void handle_line(char* line, int* score1, int* score2){
 	
 	//Init
 	Game g; 
@@ -127,31 +126,16 @@ void handle_line(char* line, void* sum, int (*score)(Game)){
 	}
 
 	parse(line, &g);
-	int* isum = (int*) sum;
-	*isum += score(g);
+	*score1 += possible(g);
+	*score2 += minimum_power(g);
 	free(g.cubes);
-}
-
-void part1(char* line, void* sum){
-	handle_line(line, sum, possible);
-}
-
-void part2(char* line, void* sum){
-	handle_line(line, sum, minimum_power);
 }
 
 int main(int argc, char *argv[]){
   
-  int sum = 0;
+  int score1 = 0, score2 = 0;
   char* fname = "data/day2.txt";
-  
-  if(strcmp(argv[1], "part1") == 0){
-    get_lines(fname, part1, &sum, 1);
-  }
-  else if(strcmp(argv[1], "part2") == 0){
-    get_lines(fname, part2, &sum, 2);
-  }
-  
-  printf("Sum: %d\n", sum);
+  get_lines(fname, handle_line, &score1, &score2);
+  printf("Part1: %d, Part2: %d\n", score1, score2);
   return 0;
 }

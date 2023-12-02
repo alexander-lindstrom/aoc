@@ -1,6 +1,7 @@
 #include "common.h"
 
-void get_lines(char* fname, void (*line_handler)(char*, void*), void* params){
+void get_lines(char* fname, void (*line_handler)(char*, int*, int*),
+	int* score1, int* score2){
 
 	char buffer[BUFSIZE]; 
 	FILE* fp = fopen(fname, "r");
@@ -11,7 +12,7 @@ void get_lines(char* fname, void (*line_handler)(char*, void*), void* params){
 	}
 
 	while(fgets(buffer, BUFSIZE, fp)){
-		line_handler(buffer, params);
+		line_handler(buffer, score1, score2);
 	}
 }
 
