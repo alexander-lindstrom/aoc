@@ -1,10 +1,11 @@
 #include "common.h"
 #include <string.h>
 
+#define COLORS 3
+char colors[][6] = {"red", "green", "blue"};
+
 typedef struct Cubes {
-	int red;
-	int green;
-	int blue;
+	int quantity[COLORS]; //red, green, blue
 } Cubes;
 
 typedef struct Game {
@@ -29,19 +30,14 @@ int get_id(const char* line){
 
 void assign(char* str, Game* g, int num, int cube_index){
 	
-	if (strstr(str, "red") != NULL){
-		g->cubes[cube_index].red = num;
+	for(int i = 0; i < COLORS; i++){
+		if (strstr(str, colors[i]) != NULL){
+			g->cubes[cube_index].quantity[i] = num;
+			return;
+		}
 	}
-	else if (strstr(str, "green") != NULL){
-		g->cubes[cube_index].green = num;
-	}
-	else if (strstr(str, "blue") != NULL){
-		g->cubes[cube_index].blue = num;
-	}
-	else{
-		printf("Invalid color!\n");
-		exit(-1);
-	}
+	printf("Invalid color!\n");
+	exit(-1);
 }
 
 void set_colors(Game* g, const char* str, int cube_index){
@@ -94,19 +90,28 @@ void parse(const char* line, Game* g){
 
 int possible(Game g){
 	
-	int rmax = 12, gmax = 13, bmax = 14;
+	int max[COLORS] = {12, 13, 14};
 	for(int i = 0; i < g.subgames; i++){
-		if (rmax < g.cubes[i].red){
-			return 0;
-		}
-		if (gmax < g.cubes[i].green){
-			return 0;
-		}
-		if (bmax < g.cubes[i].blue){
-			return 0;
-		}
+		for(int j = 0; j < COLORS; j++){
+			if (max[j] < g.cubes[i].quantity[j]){
+				return 0;
+			}
+		}	
 	}
 	return g.id;
+}
+
+int minimum_power(Game g){
+	
+	int max[COLORS] = {0, 0, 0};
+	for(int i = 0; i < g.subgames; i++){
+		for(int j = 0; j < COLORS; j++){
+			if (g.cubes[i].quantity[j] > max[j]){
+				max[j] = g.cubes[i].quantity[j];
+			}
+		}
+	}
+	return max[0]*max[1]*max[2];
 }
 
 void handle_line(char* line, void* sum, int (*score)(Game)){
@@ -127,23 +132,6 @@ void handle_line(char* line, void* sum, int (*score)(Game)){
 	free(g.cubes);
 }
 
-int minimum_power(Game g){
-	
-	int rmax = 0, gmax = 0, bmax = 0;
-	for(int i = 0; i < g.subgames; i++){
-		if (g.cubes[i].red > rmax){
-			rmax = g.cubes[i].red;
-		}
-		if (g.cubes[i].green > gmax){
-			gmax = g.cubes[i].green;
-		}
-		if (g.cubes[i].blue > bmax){
-			bmax = g.cubes[i].blue;
-		}
-	}
-	return rmax*gmax*bmax;
-}
-
 void part1(char* line, void* sum){
 	handle_line(line, sum, possible);
 }
@@ -158,10 +146,10 @@ int main(int argc, char *argv[]){
   char* fname = "data/day2.txt";
   
   if(strcmp(argv[1], "part1") == 0){
-    get_lines(fname, part1, &sum);
+    get_lines(fname, part1, &sum, 1);
   }
   else if(strcmp(argv[1], "part2") == 0){
-    get_lines(fname, part2, &sum);
+    get_lines(fname, part2, &sum, 2);
   }
   
   printf("Sum: %d\n", sum);
