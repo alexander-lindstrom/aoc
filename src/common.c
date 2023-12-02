@@ -14,3 +14,21 @@ void get_lines(char* fname, void (*line_handler)(char*, void*), void* params){
 		line_handler(buffer, params);
 	}
 }
+
+//Assumes newline at the end of string
+int count_chars(const char* str, char c){
+
+	int count = 0;
+	int i = 0;
+	
+	while(1){
+		if (str[i] == '\n' || str[i] == 0){
+			break;
+		}
+		if(str[i] == c){
+			count++;
+		}
+		i++;
+	}
+	return count;
+}
