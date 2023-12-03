@@ -3,15 +3,20 @@
 #define COLORS 3
 char colors[][6] = {"red", "green", "blue"};
 
-typedef struct Cubes {
+typedef struct Cubes{
 	int quantity[COLORS]; //red, green, blue
 } Cubes;
 
-typedef struct Game {
+typedef struct Game{
 	int id;
 	int subgames;
 	Cubes* cubes;
 } Game;
+
+typedef struct Params{
+  int* s1;
+  int* s2;
+}Params;
 
 int get_id(const char* line){
 
@@ -113,9 +118,11 @@ int minimum_power(Game g){
 	return max[0]*max[1]*max[2];
 }
 
-void handle_line(char* line, int* score1, int* score2){
+void handle_line(char* line, int row, void* params){
 	
-	//Init
+	Params* p = (Params*) params;
+  int* score1 = p->s1;
+  int* score2 = p->s2;
 	Game g; 
 	g.subgames = count_chars(line, ';') + 1;
 	g.id = get_id(line);
@@ -134,8 +141,10 @@ void handle_line(char* line, int* score1, int* score2){
 int main(int argc, char *argv[]){
   
   int score1 = 0, score2 = 0;
+  Params p;
+  p.s1 = &score1, p.s2 = &score2;
   char* fname = "data/day2.txt";
-  get_lines(fname, handle_line, &score1, &score2);
+  get_lines(fname, handle_line, &p);
   printf("Part1: %d, Part2: %d\n", score1, score2);
   return 0;
 }

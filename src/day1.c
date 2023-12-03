@@ -8,7 +8,7 @@ char numbers[9][6] = {"one", "two", "three", "four", "five",
 char reversed[9][6] = {"eno", "owt", "eerht", "ruof", "evif",
   "xis", "neves", "thgie", "enin"};
   
-void handle_line1(char* line, void* sum){
+void handle_line1(char* line, int row, void* sum){
   
   int digits[BUFSIZE];
   int i = 0;
@@ -97,7 +97,7 @@ int get_last(char* line){
 }
 
 
-void handle_line2(char* line, void* sum){
+void handle_line2(char* line, int row, void* sum){
   
   int first = get_first(line);
   int last = get_last(line);

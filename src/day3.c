@@ -20,7 +20,6 @@ typedef struct State{
 	Number* numbers;
 	int num_symbols;
 	int num_numbers;
-	int row;
 }State;
 
 void set_number(State* s, char* str, int row, int current, int len){
@@ -89,7 +88,7 @@ int score2(State s){
 
 void handle_line(char* line, int row, void* params){
 	
-	State* s = (State*)params;
+	State* s = (State*) params;
 	int i = 0, j = 0;
 	char substr[10];
 	memset(substr, 0, 10);
