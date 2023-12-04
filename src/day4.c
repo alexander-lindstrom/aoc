@@ -73,8 +73,8 @@ int score2 (State s){
   int copies[NUMCARDS];
   init_arr(copies, 1, NUMCARDS);
   for(int i = 0; i < NUMCARDS; i++){
+    int matches = intersection_size(s.cards[i].winning, s.cards[i].numbers, NUMWINNING, NUMNUMBERS);
     for(int j = 0; j < copies[i]; j++){
-      int matches = intersection_size(s.cards[i].winning, s.cards[i].numbers, NUMWINNING, NUMNUMBERS);
       for(int k = 1; k <= matches; k++){
         copies[i + k]++;
       }
