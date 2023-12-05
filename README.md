@@ -1,7 +1,8 @@
 Advent of code 2023 in C/python
 
-Compilation examples: 
+Compile examples:  
+Day n: ```gcc -g -std=c99 src/dayn.c src/common.c src/common_c.c -o bin/dayn```
 
-Day2: ```gcc -g -std=c99 src/day2.c src/common.c -o bin/day2```
-
-Day3 (x86-64 linux): ```nasm -felf64 src/adjacent.asm -o bin/adj.o && gcc -g -std=c99 src/day3.c src/common.c bin/adj.o -o bin/day3```
+Day 3 using assembly method(s):  
+ ```nasm -felf64 src/common.asm -o bin/adj.o ```  
+ ```gcc -g -std=c99 src/day3.c src/common.c src/common_asm.c bin/adj.o -o bin/day3```
