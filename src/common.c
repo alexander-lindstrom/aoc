@@ -36,18 +36,6 @@ int count_chars(const char* str, char c){
 	return count;
 }
 
-//8 neighbors
-int adjacent_c(int i, int j, int dim){
-	
-	int icol = i%dim, jcol = j%dim;
-	int irow = i/dim, jrow = j/dim;
-	
-	if (abs(irow - jrow) > 1){
-		return 0;
-	}
-	return (abs(icol - jcol) < 2);
-}
-
 //Get the size of the intersection of arr1, arr2
 int intersection_size(int* arr1, int* arr2, int n, int m){
   

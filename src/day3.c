@@ -45,7 +45,7 @@ int score1(State s){
 		for(int j = 0; j < s.numbers[i].length; j++){
 			int found = 0;
 			for(int k = 0; k < s.num_symbols; k++){
-				if (adjacent_asm(s.numbers[i].pos + j, s.symbols[k].pos, DIM)){
+				if (adjacent(s.numbers[i].pos + j, s.symbols[k].pos, DIM)){
 					sum += s.numbers[i].value;
 					found++;
 					break;
@@ -71,7 +71,7 @@ int score2(State s){
 					break;
 				}
 				for(int k = 0; k < s.numbers[j].length; k++){
-					if (adjacent_asm(s.symbols[i].pos, s.numbers[j].pos + k, DIM)){
+					if (adjacent(s.symbols[i].pos, s.numbers[j].pos + k, DIM)){
 						ratio *= s.numbers[j].value;
 						neighbors++;
 						break;

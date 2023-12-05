@@ -1,11 +1,11 @@
-global  adjacent_asm
+global  adjacent
 section .text
 
 ; Argumetns: i - index, j - index, dim - columns per row
 ; Returns 1 if i is 8-neighbor adjacent to j, otherwise 0
 ; Initial state: rdi: i, rsi: j, rdx: dim
 
-adjacent_asm:
+adjacent:
 
   mov rax, rdi                ; rax: i
   mov rbx, rdx                ; rbx: dim 
