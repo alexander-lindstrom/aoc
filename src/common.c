@@ -1,5 +1,6 @@
 #include "common.h"
 
+
 void get_lines(char* fname, void (*line_handler)(char*, int, void*), 
 	void* params){
 
@@ -84,4 +85,21 @@ void init_arr(int* arr, int value, int n){
     arr[i] = value;
   }
   printf("\n");
+}
+
+// fill dest, increment num
+void get_numbers(char* str, long long* dest, int* num){
+  char *p = str;
+  while (*p) {
+    if (isdigit(*p) || ((*p=='-'||*p=='+') && isdigit(*(p+1)))){
+      dest[*num] = strtoll(p, &p, 10);
+      (*num)++;
+    } else {
+      p++;
+    }
+  }
+}
+
+int between(long long i, long long j, long long k){
+  return i >= j && i <=k;
 }

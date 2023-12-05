@@ -3,6 +3,8 @@
 #include <string.h>
 #include <math.h>
 #include <inttypes.h>
+#include <ctype.h>
+#include <limits.h>
 
 #define BUFSIZE 256
 
@@ -14,6 +16,8 @@ void print_arr(int* arr, int n);
 int sum_arr(int*, int n);
 void init_arr(int*, int value, int n);
 int adjacent_c(int i, int j, int dim);
+void get_numbers(char* str, long long* dest, int* num);
+int between(long long i, long long j, long long k);
 
 //asm
 int64_t adjacent_asm(int64_t, int64_t, int64_t);
