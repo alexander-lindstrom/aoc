@@ -87,7 +87,3 @@ void get_numbers(char* str, long long* dest, int* num){
     }
   }
 }
-
-int between(long long i, long long j, long long k){
-  return i >= j && i <=k;
-}

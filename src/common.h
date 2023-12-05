@@ -16,7 +16,7 @@ void print_arr(int* arr, int n);
 int sum_arr(int*, int n);
 void init_arr(int*, int value, int n);
 void get_numbers(char* str, long long* dest, int* num);
-int between(long long i, long long j, long long k);
 
 //Ported to asm
 int64_t adjacent(int64_t, int64_t, int64_t);
+int64_t between(int64_t i, int64_t j, int64_t k);

@@ -1,10 +1,9 @@
-global  adjacent
 section .text
 
-; Argumetns: i - index, j - index, dim - columns per row
+; Arguments: i - index, j - index, dim - columns per row
 ; Returns 1 if i is 8-neighbor adjacent to j, otherwise 0
 ; Initial state: rdi: i, rsi: j, rdx: dim
-
+global  adjacent
 adjacent:
 
   mov rax, rdi                ; rax: i
@@ -47,3 +46,21 @@ adjacent:
 .retfalse:
   xor rax, rax
   ret
+
+; Check if i is on [j, k]
+; Initial state: rdi: i, rsi: j, rdx: k
+global  between
+between:
+
+  cmp rdi, rsi
+  jl .retfalse
+  
+  cmp rdi, rdx
+  jg .retfalse
+  
+  mov rax, 1
+  ret
+  
+
+
+  

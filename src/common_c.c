@@ -11,3 +11,7 @@ int64_t adjacent(int64_t i, int64_t j, int64_t dim){
 	}
 	return (abs(icol - jcol) < 2);
 }
+
+int64_t between(int64_t i, int64_t j, int64_t k){
+  return i >= j && i <=k;
+}
