@@ -36,7 +36,7 @@ int count_chars(const char* str, char c){
 }
 
 //8 neighbors
-int adjacent(int i, int j, int dim){
+int adjacent_c(int i, int j, int dim){
 	
 	int icol = i%dim, jcol = j%dim;
 	int irow = i/dim, jrow = j/dim;
