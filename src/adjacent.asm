@@ -1,7 +1,10 @@
 global  adjacent_asm
 section .text
 
-; initial state: rdi: i, rsi: j, rdx: dim
+; Argumetns: i - index, j - index, dim - columns per row
+; Returns 1 if i is 8-neighbor adjacent to j, otherwise 0
+; Initial state: rdi: i, rsi: j, rdx: dim
+
 adjacent_asm:
 
   mov rax, rdi                ; rax: i
@@ -12,11 +15,11 @@ adjacent_asm:
   mov r8, rdx                 ; r8: i%dim
   mov r9, rax                 ; r9: i/dim
   
-  mov rax, rsi                ; rax: j
+  mov rax, rsi                ; repeat for j
   xor rdx, rdx
-  idiv rbx                    ; rax: j/dim, rdx: j%dim
-  mov r10, rdx                ; r10: j%dim
-  mov r11, rax                ; r11: j/dim
+  idiv rbx                    
+  mov r10, rdx                
+  mov r11, rax                
   
   ; return false if abs(rowdiff) > 1
   cmp r9, r11
