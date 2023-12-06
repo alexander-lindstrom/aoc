@@ -98,10 +98,3 @@ void get_numbers_int(char* str, int* dest, int* num){
     }
   }
 }
-
-long long concatenate(long long x, long long y){
-  long long pow = 10;
-  while(y >= pow)
-    pow *= 10;
-  return x * pow + y;        
-}

@@ -15,3 +15,11 @@ int64_t adjacent(int64_t i, int64_t j, int64_t dim){
 int64_t between(int64_t i, int64_t j, int64_t k){
   return i >= j && i <=k;
 }
+
+int64_t concat(int64_t x, int64_t y){
+  int64_t pow = 10;
+  while(y >= pow){
+		pow *= 10;
+	}
+  return x * pow + y;        
+}

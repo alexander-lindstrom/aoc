@@ -50,8 +50,8 @@ int score2(State s){
   long long total_time = s.time[0];
   long long total_distance = s.distance[0];
   for(int i = 0; i < s.nt-1; i++){
-    total_time = concatenate(total_time, s.time[i+1]);
-    total_distance = concatenate(total_distance, s.distance[i+1]);
+    total_time = concat(total_time, s.time[i+1]);
+    total_distance = concat(total_distance, s.distance[i+1]);
   }
   return ways_to_win(total_time, total_distance);
 }
