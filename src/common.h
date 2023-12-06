@@ -15,7 +15,9 @@ int intersection_size(int* arr1, int* arr2, int n, int m);
 void print_arr(int* arr, int n);
 int sum_arr(int*, int n);
 void init_arr(int*, int value, int n);
-void get_numbers(char* str, long long* dest, int* num);
+void get_numbers_ll(char* str, long long* dest, int* num);
+void get_numbers_int(char* str, int* dest, int* num);
+long long concatenate(long long x, long long y);
 
 //Ported to asm
 int64_t adjacent(int64_t, int64_t, int64_t);

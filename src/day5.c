@@ -23,7 +23,7 @@ void handle_line(char* line, int row, void* params){
 	
   State* s = (State*) params;
   if (strstr(line, "seeds") != NULL){
-    get_numbers(line, s->seeds, &s->nseeds);
+    get_numbers_ll(line, s->seeds, &s->nseeds);
   }
   else if (strstr(line, "map:") != NULL){
     s->nmaps++;
@@ -33,7 +33,7 @@ void handle_line(char* line, int row, void* params){
   }
   else{
     int dummy = 0;
-    get_numbers(line, s->maps[s->nmaps-1].rows[s->maps[s->nmaps-1].nrows].items,
+    get_numbers_ll(line, s->maps[s->nmaps-1].rows[s->maps[s->nmaps-1].nrows].items,
       &dummy);
     s->maps[s->nmaps-1].nrows++;
   }

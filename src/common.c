@@ -75,8 +75,7 @@ void init_arr(int* arr, int value, int n){
   printf("\n");
 }
 
-// fill dest, increment num
-void get_numbers(char* str, long long* dest, int* num){
+void get_numbers_ll(char* str, long long* dest, int* num){
   char *p = str;
   while (*p) {
     if (isdigit(*p) || ((*p=='-'||*p=='+') && isdigit(*(p+1)))){
@@ -86,4 +85,23 @@ void get_numbers(char* str, long long* dest, int* num){
       p++;
     }
   }
+}
+
+void get_numbers_int(char* str, int* dest, int* num){
+  char *p = str;
+  while (*p) {
+    if (isdigit(*p) || ((*p=='-'||*p=='+') && isdigit(*(p+1)))){
+      dest[*num] = strtol(p, &p, 10);
+      (*num)++;
+    } else {
+      p++;
+    }
+  }
+}
+
+long long concatenate(long long x, long long y){
+  long long pow = 10;
+  while(y >= pow)
+    pow *= 10;
+  return x * pow + y;        
 }
