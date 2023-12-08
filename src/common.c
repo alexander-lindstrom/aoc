@@ -98,3 +98,35 @@ void get_numbers_int(char* str, int* dest, int* num){
     }
   }
 }
+
+long long gcd(long long a, long long b) {
+
+	int remainder = a%b;
+	if(remainder == 0){
+		return b;
+	}
+	return gcd(b, remainder);
+}
+
+long long LCM(long long a, long long b){
+	long long res = a*b/gcd(a, b);;
+	printf("a: %lld, b: %lld, res: %lld\n", a, b, res);
+	return res;
+}
+
+// note that lcm(a,b,c) = lcm(a,lcm(b,c))
+long long LCMM(int* arr, int n){
+	
+	print_arr(arr, n);
+	
+	if (n < 2){
+		printf("2 or more elements required\n");
+		exit(-1);
+	}
+	
+	long long current = LCM(arr[0], arr[1]);
+	for(int i = 2; i < n; i++){
+		current = LCM(current, arr[i]);
+	}
+	return current;
+}

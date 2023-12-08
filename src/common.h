@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <limits.h>
 
-#define BUFSIZE 256
+#define BUFSIZE 1024
 
 //Common.c
 void get_lines(char* fname, void (*line_handler)(char*, int, void*), void* params);
@@ -17,6 +17,7 @@ int sum_arr(int*, int n);
 void init_arr(int*, int value, int n);
 void get_numbers_ll(char* str, long long* dest, int* num);
 void get_numbers_int(char* str, int* dest, int* num);
+long long LCMM(int* arr, int n);
 
 
 //Ported to asm
