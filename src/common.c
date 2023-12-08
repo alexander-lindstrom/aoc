@@ -98,3 +98,56 @@ void get_numbers_int(char* str, int* dest, int* num){
     }
   }
 }
+
+int max_occ_nc(char* str, int len, char c){
+	
+	int max = 0;
+	for(int i = 0; i < len; i++){
+		int cur = 0;
+		for(int j = 0; j < len; j++){
+			if (str[i] == str[j] && str[i] != c){
+				cur++;
+				if (cur > max){
+					max = cur;
+				}
+			}
+		}
+	}
+	return max;
+}
+
+char most_occ_nc(char* str, int len, char c){
+	
+	int max = 0;
+	char most = 0;
+	for(int i = 0; i < len; i++){
+		int cur = 0;
+		for(int j = 0; j < len; j++){
+			if (str[i] == str[j] && str[i] != c){
+				cur++;
+				if (cur > max){
+					max = cur;
+					most = str[i];
+				}
+			}
+		}
+	}
+	return most;
+}
+
+int num_unique(char* str, int len){
+	int num_unique = 0;
+	for(int i = 0; i < len; i++){
+		int flag = 0;
+		for(int j = 0; j < i; j++){
+			if (str[i] == str[j]){
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 0){
+			num_unique++;
+		}
+	}
+	return num_unique;
+}
