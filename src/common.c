@@ -182,3 +182,27 @@ long long LCMM(int* arr, int n){
 	}
 	return current;
 }
+
+void forward_diff(int* arr, int* diff, int n){
+	
+	for(int i = 0; i < n-1; i++){
+		diff[i] = arr[i+1] - arr[i];
+	}
+}
+
+int nnz(int* arr, int n){
+	int count = 0;
+	for(int i = 0; i < n; i++){
+		if (arr[i]!= 0){
+			count++;
+		}
+	}
+	return count;
+}
+
+void reverse_arr(int* arr, int* rev, int n){
+	
+	for(int i = 0; i < n; i++){
+		rev[i] = arr[n-i-1];
+	}
+}

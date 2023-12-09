@@ -21,6 +21,9 @@ int num_unique(char* str, int len);
 int max_occ_nc(char* str, int len, char c);
 char most_occ_nc(char* str, int len, char c);
 long long LCMM(int* arr, int n);
+void forward_diff(int* arr, int* diff, int n);
+int nnz(int* arr, int n);
+void reverse_arr(int* arr, int* rev, int n);
 
 
 //Ported to asm
