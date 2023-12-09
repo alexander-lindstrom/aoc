@@ -17,6 +17,9 @@ int sum_arr(int*, int n);
 void init_arr(int*, int value, int n);
 void get_numbers_ll(char* str, long long* dest, int* num);
 void get_numbers_int(char* str, int* dest, int* num);
+int num_unique(char* str, int len);
+int max_occ_nc(char* str, int len, char c);
+char most_occ_nc(char* str, int len, char c);
 long long LCMM(int* arr, int n);
 
 
