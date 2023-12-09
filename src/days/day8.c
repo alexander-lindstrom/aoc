@@ -1,4 +1,5 @@
-#include "common.h"
+#include "../common.h"
+
 #define MAXITEMS 5
 #define LEN 3
 #define MAXNODES 1000

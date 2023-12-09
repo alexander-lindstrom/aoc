@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 #define MAXITEMS 5
 
 typedef struct State{

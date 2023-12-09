@@ -1,4 +1,5 @@
-#include "common.h"
+#include "../common.h"
+
 #define MAXROWS 300
 #define MAXCOLS 50
 

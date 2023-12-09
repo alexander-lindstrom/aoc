@@ -1,5 +1,4 @@
-#include "common.h"
-#include <ctype.h>
+#include "../common.h"
 
 #define MAXDIGITS 10
 #define NUMWINNING 10

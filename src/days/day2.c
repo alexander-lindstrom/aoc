@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 #define COLORS 3
 char colors[][6] = {"red", "green", "blue"};

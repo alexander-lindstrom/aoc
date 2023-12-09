@@ -1,6 +1,4 @@
-#include "common.h"
-#include <ctype.h>
-#include <string.h>
+#include "../common.h"
 
 char numbers[9][6] = {"one", "two", "three", "four", "five",
   "six", "seven", "eight", "nine"};

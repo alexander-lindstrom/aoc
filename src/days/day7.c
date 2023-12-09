@@ -1,4 +1,5 @@
-#include "common.h"
+#include "../common.h"
+
 #define NUMCARDS 5
 #define MAXROWS 1024
 #define KINDS 13

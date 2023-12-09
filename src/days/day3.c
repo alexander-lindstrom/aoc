@@ -1,5 +1,4 @@
-#include "common.h"
-#include <ctype.h>
+#include "../common.h"
 
 #define DIM 140
 #define MSIZE DIM*DIM

@@ -1,4 +1,5 @@
-#include "common.h"
+#include "../common.h"
+
 #define MAX_SEEDS 50
 #define MAX_MAPS 10
 #define MAX_ROWS 50
