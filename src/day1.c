@@ -110,17 +110,17 @@ void handle_line2(char* line, int row, void* sum){
 int main(int argc, char *argv[]){
   
   if (argc != 2){
-    printf("Usage: dayn partx");
+    printf("Usage: day1 1/2");
     exit(-1);
   }
   
   int sum = 0;
   char* fname = "data/day1.txt";
   
-  if(strcmp(argv[1], "part1") == 0){
+  if(strcmp(argv[1], "1") == 0){
     get_lines(fname, handle_line1, &sum);
   }
-  else if(strcmp(argv[1], "part2") == 0){
+  else if(strcmp(argv[1], "2") == 0){
     get_lines(fname, handle_line2, &sum);
   }
   else{
