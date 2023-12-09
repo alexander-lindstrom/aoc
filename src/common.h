@@ -30,3 +30,4 @@ void reverse_arr(int* arr, int* rev, int n);
 int64_t adjacent(int64_t, int64_t, int64_t);
 int64_t between(int64_t i, int64_t j, int64_t k);
 int64_t concat(int64_t x, int64_t y);
+int64_t LCM(int64_t a, int64_t b);

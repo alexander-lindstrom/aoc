@@ -151,20 +151,6 @@ int num_unique(char* str, int len){
 	return num_unique;
 }
 
-long long gcd(long long a, long long b) {
-
-	int remainder = a%b;
-	if(remainder == 0){
-		return b;
-	}
-	return gcd(b, remainder);
-}
-
-long long LCM(long long a, long long b){
-	long long res = a*b/gcd(a, b);;
-	return res;
-}
-
 // note that lcm(a,b,c) = lcm(a,lcm(b,c))
 long long LCMM(int* arr, int n){
 	

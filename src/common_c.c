@@ -23,3 +23,17 @@ int64_t concat(int64_t x, int64_t y){
 	}
   return x * pow + y;        
 }
+
+int64_t gcd(int64_t a, int64_t b) {
+
+	int remainder = a%b;
+	if(remainder == 0){
+		return b;
+	}
+	return gcd(b, remainder);
+}
+
+int64_t LCM(int64_t a, int64_t b){
+	int64_t res = a*b/gcd(a, b);;
+	return res;
+}

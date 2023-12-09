@@ -51,7 +51,6 @@ adjacent:
 ; Initial state: rdi - i, rsi - j, rdx - k
 global  between
 between:
-
   cmp rdi, rsi
   jl .retfalse
   
@@ -65,12 +64,11 @@ between:
   xor rax, rax
   ret
   
-; Concatenate two numbers a, b.
+; Concatenate two numbers a, b
 ; Initial state: rdi - x, rsi - y
 ; Example: x = 33, y = 41 -> 3341
 global concat
 concat:
-
 	mov rax, 10
 	mov rcx, 10
 	
@@ -84,6 +82,39 @@ concat:
 	mul rdi 			; rdi*rax -> rax
 	add rax, rsi
 	ret
+	
+
+; Return LCM (a,b). Assumed to fit in 64 bits
+; Uses LCM = (a*b)/gcd
+; Arguments: a, b
+global LCM
+LCM:
+
+	mov rax, rdi	
+	mov rcx, rsi
+
+; Initially rax - a, rsi - b
+; When done rax - gcd
+.gcd:
+	xor rdx, rdx
+	div rcx
+	mov rax, rcx
+	mov rcx, rdx
+	cmp rcx, 0
+	jnz .gcd
+
+; Initially rdi - a, rsi, b, rax - gcd
+.lcm:
+	mov rbx, rax	; rbx - gcd
+	mov rax, rdi
+	mul rsi				; rax - a*b		
+
+	xor rdx, rdx
+	div rbx				; rax - a*b/gcd
+	ret
+	
+
+
 
 
   
