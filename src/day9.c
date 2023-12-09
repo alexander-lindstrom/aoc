@@ -40,7 +40,7 @@ int extrapolate(int* arr, int n){
 	return arr[n-1] + extrapolate(diff, n-1);
 }
 
-long long score(State s, int target, int part){
+long long score(State s, int part){
 	
 	long long sum = 0;
 	for(int i = 0; i < s.nrows; i++){
@@ -58,12 +58,11 @@ long long score(State s, int target, int part){
 
 int main(int argc, char *argv[]){
 
-	int target = atoi(argv[1]);
 	char* fname = "data/day9.txt";
 	State s = {.nrows = 0};
   get_lines(fname, handle_line, &s);
-	printf("Part1: %lld\n", score(s, target, 1));
-	printf("Part2: %lld\n", score(s, target, 2));
+	printf("Part1: %lld\n", score(s, 1));
+	printf("Part2: %lld\n", score(s, 2));
 	
   return 0;
 }
