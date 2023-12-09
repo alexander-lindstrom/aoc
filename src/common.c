@@ -162,14 +162,11 @@ long long gcd(long long a, long long b) {
 
 long long LCM(long long a, long long b){
 	long long res = a*b/gcd(a, b);;
-	printf("a: %lld, b: %lld, res: %lld\n", a, b, res);
 	return res;
 }
 
 // note that lcm(a,b,c) = lcm(a,lcm(b,c))
 long long LCMM(int* arr, int n){
-	
-	print_arr(arr, n);
 	
 	if (n < 2){
 		printf("2 or more elements required\n");
