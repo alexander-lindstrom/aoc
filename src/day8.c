@@ -83,7 +83,6 @@ void set_start(State s, int* start, int* nstart){
 	
 	for(int i = 0; i < s.num_nodes; i++){
 		if (s.lookup[i][2] == 'A'){
-			printf("%s\n", s.lookup[i]);
 			start[*nstart] = i; 
 			(*nstart)++;
 		}
@@ -126,7 +125,6 @@ long long score2(State s){
 	
 	for(int i = 0; i < nstart; i++){
 		int current = label_to_id(s, s.lookup[start[i]]);
-		printf("Start label: %s\n", s.lookup[start[i]]);
 		while(s.lookup[current][2] != 'Z'){
 			
 			int instr = s.instructions[steps[i]%s.num_instructions];
