@@ -183,7 +183,6 @@ int nnz(int* arr, int n){
 }
 
 void reverse_arr(int* arr, int* rev, int n){
-	
 	for(int i = 0; i < n; i++){
 		rev[i] = arr[n-i-1];
 	}
