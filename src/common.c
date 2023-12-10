@@ -71,7 +71,6 @@ void init_arr(int* arr, int value, int n){
   for(int i = 0; i < n; i++){
     arr[i] = value;
   }
-  printf("\n");
 }
 
 void get_numbers_ll(char* str, long long* dest, int* num){
