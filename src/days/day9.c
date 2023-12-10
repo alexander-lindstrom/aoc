@@ -64,6 +64,5 @@ int main(int argc, char *argv[]){
   get_lines(fname, handle_line, &s);
 	printf("Part1: %lld\n", score(s, 1));
 	printf("Part2: %lld\n", score(s, 2));
-	
   return 0;
 }

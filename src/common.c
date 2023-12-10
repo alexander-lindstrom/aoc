@@ -150,21 +150,6 @@ int num_unique(char* str, int len){
 	return num_unique;
 }
 
-// note that lcm(a,b,c) = lcm(a,lcm(b,c))
-long long LCMM(int* arr, int n){
-	
-	if (n < 2){
-		printf("2 or more elements required\n");
-		exit(-1);
-	}
-	
-	long long current = LCM(arr[0], arr[1]);
-	for(int i = 2; i < n; i++){
-		current = LCM(current, arr[i]);
-	}
-	return current;
-}
-
 void forward_diff(int* arr, int* diff, int n){
 	
 	for(int i = 0; i < n-1; i++){

@@ -6,13 +6,13 @@ section .text
 global  adjacent
 adjacent:
 
-  mov rax, rdi 		; rax: i
-  mov rcx, rdx    ; rcx: dim 
-  xor rdx, rdx    ; zero top part of RDX:RAX
+  mov rax, rdi
+  mov rcx, rdx
+  xor rdx, rdx
   
-  idiv rcx        ; rax: i/dim, rdx: i%dim
-  mov r8, rdx    	; r8: i%dim
-  mov r9, rax     ; r9: i/dim
+  idiv rcx
+  mov r8, rdx
+  mov r9, rax 
   
   mov rax, rsi
   xor rdx, rdx
@@ -75,21 +75,20 @@ concat:
 .loop:
 	cmp rax, rsi
 	jg .done
-	mul rcx 			; rcx*rax -> rax
+	mul rcx
 	jmp .loop
 	
 .done:
-	mul rdi 			; rdi*rax -> rax
+	mul rdi
 	add rax, rsi
 	ret
 	
 
-; Return LCM (a,b). Assumed to fit in 64 bits
-; Uses LCM = (a*b)/gcd
-; Arguments: a, b
+; Return LCM(a,b). Assumed to fit in 64 bits
+; Uses LCM(a,b) = (a*b)/gcd(a,b)
+; Initially rdi - a, rsi - b
 global LCM
 LCM:
-
 	mov rax, rdi	
 	mov rcx, rsi
 
@@ -103,18 +102,47 @@ LCM:
 	cmp rcx, 0
 	jnz .gcd
 
-; Initially rdi - a, rsi, b, rax - gcd
+; Initially rdi - a, rsi - b, rax - gcd
 .lcm:
-	mov rbx, rax	; rbx - gcd
+	mov rcx, rax	
 	mov rax, rdi
-	mul rsi				; rax - a*b		
+	mul rsi					
 
 	xor rdx, rdx
-	div rbx				; rax - a*b/gcd
+	div rcx
+	ret
+
+; Initially rdi - arr*, rsi - n
+global LCMM
+LCMM:
+	mov r8, rdi
+	mov r9, rsi
+	cmp r9, 2
+	jl .fail
+	
+	; Get first LCM
+	mov rsi, qword[r8]
+	mov rdi, qword[r8 + 8]
+	add r8, 16
+
+	; LCM(i, i+1) now in rax
+	call LCM
+	
+	mov r10, 2
+	
+.loop:
+	cmp r10, r9
+	jge .success
+	mov rdi, qword [r8]
+	mov rsi, rax
+	call LCM
+	inc r10
+	add r8, 8
+	jmp .loop
+	
+.fail:
+	xor rax, rax
 	ret
 	
-
-
-
-
-  
+.success:
+	ret

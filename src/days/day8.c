@@ -80,7 +80,7 @@ int label_to_id(State s, char* label){
 	}
 }
 
-void set_start(State s, int* start, int* nstart){
+void set_start(State s, int* start, int64_t* nstart){
 	
 	for(int i = 0; i < s.num_nodes; i++){
 		if (s.lookup[i][2] == 'A'){
@@ -117,9 +117,9 @@ int score1(State s){
 long long score2(State s){
 	
 	int start[MAXNODES];
-	int nstart = 0;
+	int64_t nstart = 0;
 	set_start(s, start, &nstart);
-	int steps[nstart];
+	int64_t steps[nstart];
 	for(int i = 0; i < nstart; i++){
 		steps[i] = 0;
 	}
@@ -145,7 +145,7 @@ void set_neighbor_ids(State* s){
 	}
 }
 
-int main(int argc, char *argv[]){
+int main(void){
   
   char* fname = "data/day8.txt";
   State s = {.num_nodes = 0};
@@ -154,6 +154,5 @@ int main(int argc, char *argv[]){
 	set_neighbor_ids(&s);
 	printf("Score1: %d\n", score1(s));
 	printf("Score2: %lld\n", score2(s));
-  
   return 0;
 }

@@ -20,13 +20,14 @@ void get_numbers_int(char* str, int* dest, int* num);
 int num_unique(char* str, int len);
 int max_occ_nc(char* str, int len, char c);
 char most_occ_nc(char* str, int len, char c);
-long long LCMM(int* arr, int n);
+
 void forward_diff(int* arr, int* diff, int n);
 int nnz(int* arr, int n);
 void reverse_arr(int* arr, int* rev, int n);
 
 //Ported to asm
-int64_t adjacent(int64_t, int64_t, int64_t);
-int64_t between(int64_t i, int64_t j, int64_t k);
+int32_t adjacent(int32_t, int32_t, int32_t);
+int32_t between(int32_t i, int32_t j, int32_t k);
 int64_t concat(int64_t x, int64_t y);
 int64_t LCM(int64_t a, int64_t b);
+int64_t LCMM(int64_t* arr, int64_t n);
