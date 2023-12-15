@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <limits.h>
 
-#define BUFSIZE 1024
+#define BUFSIZE 1024*50
 
 //Common.c
 void get_lines(char* fname, void (*line_handler)(char*, int, void*), void* params);
