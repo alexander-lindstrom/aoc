@@ -5,5 +5,5 @@
 **Day 3**  
 ```make day=3```
 
-**Day 5 using assembly methods where applicable. Runs on x64 linux.**  
+**Day 5 using common assembly methods where applicable. NASM, ELF64.**  
 ```make asm day=5```
