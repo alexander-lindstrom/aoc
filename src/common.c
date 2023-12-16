@@ -172,3 +172,7 @@ void reverse_arr(int* arr, int* rev, int n){
 		rev[i] = arr[n-i-1];
 	}
 }
+
+int sign(int x){
+    return (x > 0) - (x < 0);
+}

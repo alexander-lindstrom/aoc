@@ -23,6 +23,7 @@ char most_occ_nc(char* str, int len, char c);
 void forward_diff(int* arr, int* diff, int n);
 int nnz(int* arr, int n);
 void reverse_arr(int* arr, int* rev, int n);
+int sign(int x);
 
 //Ported to asm
 int32_t adjacent(int32_t, int32_t, int32_t);
