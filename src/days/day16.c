@@ -1,7 +1,6 @@
 #include "../common.h"
 
 #define DIM 110
-//#define DIM 10
 #define NORTH -DIM
 #define EAST 1
 #define SOUTH DIM
@@ -22,7 +21,6 @@ typedef struct State{
 }State;
 
 int directions[DIRS] = {NORTH, EAST, SOUTH, WEST};
-
 void trace(State* s, int cur, int dir);
 
 void handle_line(char* line, int row, void* params){
@@ -103,9 +101,7 @@ int branch(State* s, int cur, int dir){
 
 void trace(State* s, int cur, int dir){
 	
-	dir = direction(s, cur, dir);
-	dir = branch(s, cur, dir);
-	
+	dir = branch(s, cur, direction(s, cur, dir));
 	while(1){
 		
 		if(key_exist(s, cur, dir)){
@@ -123,8 +119,7 @@ void trace(State* s, int cur, int dir){
 			}
 		}
 		cur = next;
-		dir = direction(s, cur, dir);
-		dir = branch(s, cur, dir);
+		dir = branch(s, cur, direction(s, cur, dir));
 	}
 }
 
@@ -141,11 +136,6 @@ int energized(State* s){
 		}
 	}
 	return sum;
-}
-
-int score1(State* s){
-	trace(s, 0, EAST);
-	return energized(s);
 }
 
 int iterate(State* s, int dir){
@@ -174,6 +164,11 @@ int iterate(State* s, int dir){
 		}
 	}
 	return max;
+}
+
+int score1(State* s){
+	trace(s, 0, EAST);
+	return energized(s);
 }
 
 int score2(State* s){
