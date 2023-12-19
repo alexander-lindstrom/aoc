@@ -176,3 +176,15 @@ void reverse_arr(int* arr, int* rev, int n){
 int sign(int x){
     return (x > 0) - (x < 0);
 }
+
+int min(int a, int b){
+	return a < b ? a : b;
+}
+
+int max(int a, int b){
+	return a > b ? a : b;
+}
+
+int overlap(int min1, int max1, int min2, int max2){
+	return max(0, min(max1, max2) - max(min1, min2));
+}

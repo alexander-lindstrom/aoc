@@ -40,7 +40,6 @@ void handle_line(char* line, int row, void* params){
 	}
     i++;
     s->instructions[s->numInstructions].value = atoi(substr);
-
     memmove(s->instructions[s->numInstructions].hex, line + i + 2, 6);
     s->numInstructions++;
 }
@@ -52,17 +51,13 @@ long long score(State* s, int part){
     for(int i = 0; i < s->numInstructions; i++){
 
         Instruction I = s->instructions[i];
-        int dir;
-        int value;
+        int dir = I.dir;
+        int value = I.value;
         if(part == 2){
             dir = mapping[I.hex[5] - '0'];
             I.hex[5] = 0;
             char* dummy;
             value = strtol(I.hex, &dummy, 16);
-        }
-        else{
-            dir = I.dir;
-            value = I.value;
         }
         
         b += value;
@@ -83,7 +78,7 @@ long long score(State* s, int part){
         A += cur.col * next.row - cur.row * next.col;
         cur.row += next.row, cur.col += next.col;
     }
-    return  0.5 * b + 0.5*A + 1;
+    return  0.5 * b + 0.5 * A + 1;
 }
 
 int main(int argc, char *argv[]){
