@@ -24,7 +24,7 @@ int64_t concat(int64_t x, int64_t y){
   return x * pow + y;        
 }
 
-int32_t gcd(int32_t a, int32_t b) {
+int64_t gcd(int64_t a, int64_t b) {
 
 	int remainder = a%b;
 	if(remainder == 0){
