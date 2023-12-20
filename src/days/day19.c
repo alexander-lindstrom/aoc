@@ -139,7 +139,7 @@ void setWorkflowIds(State* s){
     }
 }
 
-int WorkflowLabelToId(State* s, char* label){
+int workflowLabelToId(State* s, char* label){
     for(int i = 0; i < s->numWorkflows; i++){
         if(strcmp(s->wf[i].label, label) == 0){
             return i;
@@ -182,7 +182,7 @@ int score1(State* s){
 long long cubeVolume(Cube c1){
     long long volume = 1;
     for(int i = 0; i < NUMTYPES; i++){
-        volume *= (long long)(c1.max[i] - c1.min[i]);
+        volume *= (long long)(c1.max[i] - c1.min[i]+1);
     }
     return volume;
 }
