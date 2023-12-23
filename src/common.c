@@ -188,3 +188,12 @@ int max(int a, int b){
 int overlap(int min1, int max1, int min2, int max2){
 	return max(0, min(max1, max2) - max(min1, min2));
 }
+
+int element_in_arr(int* arr, int ele, int n){
+	for(int i = 0; i < n; i++){
+		if(arr[i] == ele){
+			return 1;
+		}
+	}
+	return 0;
+}

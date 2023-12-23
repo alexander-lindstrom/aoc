@@ -27,6 +27,7 @@ int sign(int x);
 int max(int a, int b);
 int min(int a, int b);
 int overlap(int min1, int max1, int min2, int max2);
+int element_in_arr(int* arr, int ele, int n);
 
 //Ported to asm
 int32_t adjacent(int32_t, int32_t, int32_t);
