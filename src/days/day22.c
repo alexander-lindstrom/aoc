@@ -120,26 +120,6 @@ int settleRocks(State* s){
     return numUnique;
 }
 
-void copyState(State* s1, const State* s2){
-
-    for(int i = 0; i < NUMBLOCKS; i++){
-        s1->blocks[i].id = s2->blocks[i].id;
-        s1->blocks[i].blockLen = s2->blocks[i].blockLen;
-        for(int j = 0; j < s2->blocks[i].blockLen; j++){
-            s1->blocks[i].cubes[j].x = s2->blocks[i].cubes[j].x;
-            s1->blocks[i].cubes[j].y = s2->blocks[i].cubes[j].y;
-            s1->blocks[i].cubes[j].z = s2->blocks[i].cubes[j].z;
-        }
-    }
-    for(int i = 0; i < XMAX; i++){
-        for(int j = 0; j < YMAX; j++){
-            for(int k = 0; k < ZMAX; k++){
-                s1->grid[i][j][k] = s2->grid[i][j][k];
-            }
-        }
-    }
-}
-
 int score1(State* s){
 
     settleRocks(s);
@@ -166,7 +146,7 @@ int score2(State* s){
     int sum = 0;
     for(int i = 0; i < NUMBLOCKS; i++){
         State copy = {0};
-        copyState(&copy, s);
+        memcpy(&copy, s, sizeof(State));
         removeBlock(copy.grid, &copy.blocks[i]);
         sum += settleRocks(&copy);
     }

@@ -21,15 +21,6 @@ void handle_line(char* line, int row, void* params){
 	
 }
 
-void print_state(State s){
-	for(int i = 0; i < s.nrows; i++){
-		for(int j = 0; j < s.rows[i].ncols; j++){
-			printf("%d ", s.rows[i].cols[j]);
-		}
-		printf("\n");
-	}
-}
-
 int extrapolate(int* arr, int n){
 
 	int diff[n-1];
