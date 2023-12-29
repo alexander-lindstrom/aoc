@@ -89,15 +89,15 @@ bool GE(double A[DIM][DIM], double b[DIM], double* x){
     for(int i = 0; i < DIM; i++){
 
         int index = 0;
-        double imax = 0;
+        double max = 0;
         for(int j = i; j < DIM; j++){
-            if(fabs(A[i][j]) > imax){
-                imax = fabs(A[i][j]);
+            if(fabs(A[i][j]) > max){
+                max = fabs(A[i][j]);
                 index = j;
             }
         }
 
-        if(condition(imax, 0.0)){
+        if(condition(max, 0.0)){
             return false;
         }
 
@@ -123,13 +123,11 @@ bool GE(double A[DIM][DIM], double b[DIM], double* x){
         }
 		x[i] /= A[i][i];
 	}
-    for(int i = 0; i < DIM; i++){
-        printf("xi: %lf\n", x[i]);
-    }
 	return true;
 }
 
-//Solve the linear system using GE. Insp
+//Solve the linear system using GE. System setup heavily inspired by someone else.
+//Could not get the first setup i used to work.
 //Equations are on the form:
 //(v_y1-v_y2)x - (v_x1-v_x2)y + - (y_1-y_2)v_x + (x_1-x_2)v_y = y_2*v_x2 + x_2*v_y2 - y_1*x_1 - x_1*v_y1
 //Produces different results for different triples of hails due to numerical instability.
