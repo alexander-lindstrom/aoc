@@ -23,7 +23,7 @@ char most_occ_nc(char* str, int len, char c);
 void forward_diff(int* arr, int* diff, int n);
 int nnz(int* arr, int n);
 void reverse_arr(int* arr, int* rev, int n);
-int sign(int x);
+int sign(long long x);
 int max(int a, int b);
 int min(int a, int b);
 int overlap(int min1, int max1, int min2, int max2);

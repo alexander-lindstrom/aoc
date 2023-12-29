@@ -173,7 +173,7 @@ void reverse_arr(int* arr, int* rev, int n){
 	}
 }
 
-int sign(int x){
+int sign(long long x){
     return (x > 0) - (x < 0);
 }
 
