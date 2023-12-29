@@ -27,10 +27,6 @@ void handleLine(char* line, int row, void* params){
     get_numbers_ll(line, s->hail[row].data, &dummy);
 }
 
-int signDouble(double x){
-    return ((x + EPS) > 0) - ((x - EPS) < 0);
-}
-
 Point collisionPoint2d(Hail h1, Hail h2){
 
     double x1 = h1.data[0], y1 = h1.data[1];
@@ -48,7 +44,7 @@ Point collisionPoint2d(Hail h1, Hail h2){
 
 bool inFuture(Hail h, Point p){
     double xdiff = p.x - h.data[0], ydiff = p.y - h.data[1];
-    return signDouble(xdiff) == sign(h.data[3]) && signDouble(ydiff) == sign(h.data[4]);
+    return sign(xdiff) == sign(h.data[3]) && sign(ydiff) == sign(h.data[4]);
 }
 
 bool withinArea(Point p, long long min, long long max){
